@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+using namespace std;
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template<class K>
+using ordered_set = tree<K, null_type, less<K>, rb_tree_tag, tree_order_statistics_node_update>;
+#define ll long long int
+#define double long double
+#define zll uint64_t
+#define all(x) x.begin(), x.end()
+#define cout(x) cout<<setprecision(20)<<x<<endl 
+#define rall(x) (x).begin(),(x).end(),greater<int>()
+#define vin(a) for(int i=0;i<(a).size();i++)cin>>a[i];
+#define vout(a) for(int i=0;i<a.size();i++)cout<<a[i]<<' ';cout<<endl;
+#define vl vector<ll> 
+#define pb push_back
+#define py cout<<"YES"<<endl
+#define pn cout<<"NO"<<endl
+#define pa cout << ans << endl
+//#define endl '\n'
+#define ret(msg) cout << msg << '\n'; return
+#define  ff first
+#define  ss second
+#define M 1000000007
+ll power(ll a, ll b, ll mod) {
+    if (b == 0)
+        return 1;
+
+    if (b % 2) {
+        ll x = power(a, b / 2, mod);
+        return (((x * x) % mod) * a) % mod;
+    } else {
+        ll x = power(a, b / 2, mod);
+        return (x * x) % mod;
+    }
+}
+    long long binaryExponentiation(long long base, long long exp, long long mod) {
+    long long result = 1; 
+    base = base % mod;   // Take base modulo mod
+ 
+    while (exp > 0) {
+        // If exp is odd, multiply base with result
+        if (exp % 2 == 1) {
+            result = (result * base) % mod;
+        }
+        // Divide exp by 2 and square the base
+        exp = exp / 2;
+        base = (base * base) % mod;
+    }
+ 
+    return result;
+}
+bool interact(ll x){
+    cout<<x<<endl;
+    string s; cin>>s;
+    if(s=="yes"){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+//constraints?
+
+void solve(){
+ll y=0;
+vector<int>v={2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
+for(int i=0;i<v.size();i++){
+    if(interact(v[i])==true){
+        y++;
+        if(v[i]<=10){
+        if(interact(v[i]*v[i])==true){
+            y=10;
+            break;
+        }}
+    }
+}
+if(y>1){
+    cout<<"composite"<<endl;
+}
+else{
+    cout<<"prime"<<endl;
+}
+
+
+
+
+}
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t=1;
+ //  cin>>t;
+    for(int i = 1; i<=t; i++){
+   // cout<<"Case #"<<i<<": ";
+        solve();}
+  
+    return 0;
+}
